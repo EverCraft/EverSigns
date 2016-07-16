@@ -1,4 +1,4 @@
-package fr.evercraft.everstats.command.sub;
+package fr.evercraft.eversigns.command.sub;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,10 +12,10 @@ import org.spongepowered.api.text.format.TextColors;
 import fr.evercraft.everapi.EAMessage.EAMessages;
 import fr.evercraft.everapi.plugin.EChat;
 import fr.evercraft.everapi.plugin.command.ESubCommand;
-import fr.evercraft.everstats.ESCommand;
-import fr.evercraft.everstats.ESPermissions;
-import fr.evercraft.everstats.EverSigns;
-import fr.evercraft.everstats.ESMessage.EKMessages;
+import fr.evercraft.eversigns.ESCommand;
+import fr.evercraft.eversigns.ESPermissions;
+import fr.evercraft.eversigns.EverSigns;
+import fr.evercraft.eversigns.ESMessage.EKMessages;
 
 public class ESReload extends ESubCommand<EverSigns> {
 	public ESReload(final EverSigns plugin, final ESCommand command) {

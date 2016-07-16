@@ -1,4 +1,4 @@
-package fr.evercraft.everstats;
+package fr.evercraft.eversigns;
 
 import java.util.Arrays;
 import java.util.List;
@@ -22,7 +22,7 @@ public class ESMessage extends EMessage {
 		PREFIX("prefix",  							
 				"[&4Ever&6&lKits&f] "),
 		DESCRIPTION("description", 
-				"Gestionnaire des kits");
+				"Gestionnaire des panneaux");
 		
 		private final String path;
 	    private final Object french;

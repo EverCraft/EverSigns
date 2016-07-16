@@ -1,4 +1,4 @@
-package fr.evercraft.everstats;
+package fr.evercraft.eversigns;
 
 public class ESListener {
 	private EverSigns plugin;

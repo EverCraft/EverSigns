@@ -1,10 +1,10 @@
-package fr.evercraft.everstats;
+package fr.evercraft.eversigns;
 
 import org.spongepowered.api.plugin.Dependency;
 import org.spongepowered.api.plugin.Plugin;
 
 import fr.evercraft.everapi.plugin.EPlugin;
-import fr.evercraft.everstats.command.sub.ESReload;
+import fr.evercraft.eversigns.command.sub.ESReload;
 
 @Plugin(id = "fr.evercraft.everkits", 
 		name = "EverKits", 

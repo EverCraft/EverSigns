@@ -1,10 +1,10 @@
-package fr.evercraft.everstats;
+package fr.evercraft.eversigns;
 
 import org.spongepowered.api.command.CommandSource;
 import org.spongepowered.api.text.Text;
 
 import fr.evercraft.everapi.plugin.command.EParentCommand;
-import fr.evercraft.everstats.ESMessage.EKMessages;
+import fr.evercraft.eversigns.ESMessage.EKMessages;
 
 public class ESCommand extends EParentCommand<EverSigns> {
 	

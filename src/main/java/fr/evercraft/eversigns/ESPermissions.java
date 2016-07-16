@@ -1,4 +1,4 @@
-package fr.evercraft.everstats;
+package fr.evercraft.eversigns;
 
 import org.spongepowered.api.command.CommandSource;
 

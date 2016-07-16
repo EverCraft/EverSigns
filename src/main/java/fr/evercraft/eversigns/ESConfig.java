@@ -1,4 +1,4 @@
-package fr.evercraft.everstats;
+package fr.evercraft.eversigns;
 
 import java.util.HashMap;
 import java.util.Map;
