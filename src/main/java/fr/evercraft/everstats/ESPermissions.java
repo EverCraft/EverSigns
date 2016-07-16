@@ -1,4 +1,4 @@
-package fr.evercraft.everkits;
+package fr.evercraft.everstats;
 
 import org.spongepowered.api.command.CommandSource;
 
@@ -6,24 +6,24 @@ import com.google.common.base.Preconditions;
 
 import fr.evercraft.everapi.plugin.EnumPermission;
 
-public enum EKPermissions implements EnumPermission {
-	EVERKITS("command"),
+public enum ESPermissions implements EnumPermission {
+	EVERSIGNS("command"),
 	
 	HELP("help"),
 	RELOAD("reload");
 	
-	private final static String prefix = "everkits";
+	private final static String prefix = "eversigns";
 	
 	private final String permission;
     
-    private EKPermissions(final String permission) {   	
+    private ESPermissions(final String permission) {   	
     	Preconditions.checkNotNull(permission, "La permission '" + this.name() + "' n'est pas définit");
     	
     	this.permission = permission;
     }
 
     public String get() {
-		return EKPermissions.prefix + "." + this.permission;
+		return ESPermissions.prefix + "." + this.permission;
 	}
     
     public boolean has(CommandSource player) {

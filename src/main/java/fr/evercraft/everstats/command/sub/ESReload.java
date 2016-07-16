@@ -1,4 +1,4 @@
-package fr.evercraft.everkits.command.sub;
+package fr.evercraft.everstats.command.sub;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,18 +12,18 @@ import org.spongepowered.api.text.format.TextColors;
 import fr.evercraft.everapi.EAMessage.EAMessages;
 import fr.evercraft.everapi.plugin.EChat;
 import fr.evercraft.everapi.plugin.command.ESubCommand;
-import fr.evercraft.everkits.EKCommand;
-import fr.evercraft.everkits.EKMessage.EKMessages;
-import fr.evercraft.everkits.EKPermissions;
-import fr.evercraft.everkits.EverKits;
+import fr.evercraft.everstats.ESCommand;
+import fr.evercraft.everstats.ESPermissions;
+import fr.evercraft.everstats.EverSigns;
+import fr.evercraft.everstats.ESMessage.EKMessages;
 
-public class EKReload extends ESubCommand<EverKits> {
-	public EKReload(final EverKits plugin, final EKCommand command) {
+public class ESReload extends ESubCommand<EverSigns> {
+	public ESReload(final EverSigns plugin, final ESCommand command) {
         super(plugin, command, "reload");
     }
 	
 	public boolean testPermission(final CommandSource source) {
-		return source.hasPermission(EKPermissions.RELOAD.get());
+		return source.hasPermission(ESPermissions.RELOAD.get());
 	}
 
 	public Text description(final CommandSource source) {
