@@ -10,7 +10,10 @@ public enum ESPermissions implements EnumPermission {
 	EVERSIGNS("command"),
 	
 	HELP("help"),
-	RELOAD("reload");
+	RELOAD("reload"),
+	COLOR("color"),
+	FORMAT("format"),
+	MAGIC("magic");
 	
 	private final static String prefix = "eversigns";
 	
