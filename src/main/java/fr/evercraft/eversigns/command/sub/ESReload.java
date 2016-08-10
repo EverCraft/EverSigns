@@ -29,9 +29,9 @@ import fr.evercraft.everapi.EAMessage.EAMessages;
 import fr.evercraft.everapi.plugin.EChat;
 import fr.evercraft.everapi.plugin.command.ESubCommand;
 import fr.evercraft.eversigns.ESCommand;
+import fr.evercraft.eversigns.ESMessage.ESMessages;
 import fr.evercraft.eversigns.ESPermissions;
 import fr.evercraft.eversigns.EverSigns;
-import fr.evercraft.eversigns.ESMessage.EKMessages;
 
 public class ESReload extends ESubCommand<EverSigns> {
 	public ESReload(final EverSigns plugin, final ESCommand command) {
@@ -67,7 +67,7 @@ public class ESReload extends ESubCommand<EverSigns> {
 
 	private boolean commandReload(final CommandSource player) {
 		this.plugin.reload();
-		player.sendMessage(EChat.of(EKMessages.PREFIX.get() + EAMessages.RELOAD_COMMAND.get()));
+		player.sendMessage(EChat.of(ESMessages.PREFIX.get() + EAMessages.RELOAD_COMMAND.get()));
 		return true;
 	}
 }

@@ -27,9 +27,14 @@ public enum ESPermissions implements EnumPermission {
 	
 	HELP("help"),
 	RELOAD("reload"),
-	COLOR("color"),
-	FORMAT("format"),
-	MAGIC("magic");
+	
+	REPLACE_COLOR("replace.color"),
+	REPLACE_FORMAT("replace.format"),
+	REPLACE_MAGIC("replace.magic"),
+	
+	SIGN_CREATE("sign.create"),
+	SIGN_USE("sign.use"),
+	SIGN_BREAK("sign.break");
 	
 	private final static String prefix = "eversigns";
 	

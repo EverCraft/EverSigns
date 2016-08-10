@@ -18,9 +18,11 @@ package fr.evercraft.eversigns;
 
 import org.spongepowered.api.plugin.Dependency;
 import org.spongepowered.api.plugin.Plugin;
-
 import fr.evercraft.everapi.plugin.EPlugin;
+
+import fr.evercraft.everapi.services.signs.SignService;
 import fr.evercraft.eversigns.command.sub.ESReload;
+import fr.evercraft.eversigns.service.ESignService;
 
 @Plugin(id = "fr.evercraft.eversigns", 
 		name = "EverSigns", 
@@ -33,14 +35,17 @@ import fr.evercraft.eversigns.command.sub.ESReload;
 		})
 public class EverSigns extends EPlugin {
 	private ESConfig configs;
-	
 	private ESMessage messages;
+	
+	private ESignService service;
 	
 	@Override
 	protected void onPreEnable() {		
 		this.configs = new ESConfig(this);
-		
 		this.messages = new ESMessage(this);
+		
+		this.service = new ESignService(this);
+		this.getGame().getServiceManager().setProvider(this, SignService.class, this.service);
 		
 		this.getGame().getEventManager().registerListeners(this, new ESListener(this));
 	}
@@ -69,5 +74,9 @@ public class EverSigns extends EPlugin {
 	
 	public ESConfig getConfigs() {
 		return this.configs;
+	}
+	
+	public ESignService getService() {
+		return this.service;
 	}
 }

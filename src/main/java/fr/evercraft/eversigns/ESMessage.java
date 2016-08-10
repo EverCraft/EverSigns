@@ -31,25 +31,28 @@ import fr.evercraft.everapi.plugin.file.EnumMessage;
 public class ESMessage extends EMessage {
 
 	public ESMessage(final EverSigns plugin) {
-		super(plugin, EKMessages.values());
+		super(plugin, ESMessages.values());
 	}
 	
-	public enum EKMessages implements EnumMessage {
-		PREFIX("prefix",  							
-				"[&4Ever&6&lKits&f] "),
-		DESCRIPTION("description", 
-				"Gestionnaire des panneaux");
+	public enum ESMessages implements EnumMessage {
+		PREFIX("prefix", 				"[&4Ever&6&lKits&f] "),
+		DESCRIPTION("description",		"Gestionnaire des panneaux"),
+				
+		SIGN_CREATE("sign.create",		"&7Panneau crée avec succès."),
+		SIGN_DISABLE("sign.disable",    "&cSe panneau est désactivé."),
+				
+		BALANCE_PLAYER("balance.player", "&7Vous avez actuellement &6<solde> <symbol>&7.", "&7Balance : &6<solde> <symbol>");
 		
 		private final String path;
 	    private final Object french;
 	    private final Object english;
 	    private Object message;
 	    
-	    private EKMessages(final String path, final Object french) {   	
+	    private ESMessages(final String path, final Object french) {   	
 	    	this(path, french, french);
 	    }
 	    
-	    private EKMessages(final String path, final Object french, final Object english) {
+	    private ESMessages(final String path, final Object french, final Object english) {
 	    	Preconditions.checkNotNull(french, "Le message '" + this.name() + "' n'est pas définit");
 	    	
 	    	this.path = path;	    	
