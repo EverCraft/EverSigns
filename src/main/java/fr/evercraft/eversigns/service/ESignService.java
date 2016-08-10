@@ -41,9 +41,9 @@ public class ESignService implements SignService {
 	
 	@Override
 	public boolean add(SignSubject subject) {
-		if(this.signs.containsKey(subject.getName())) {
+		if(!this.signs.containsKey(subject.getName())) {
 			ESign sign = new ESign(subject);
-			this.signs.put(sign.getTitle(), sign);
+			this.signs.put(sign.getTitle().toLowerCase(), sign);
 			return true;
 		}
 		return false;
@@ -51,7 +51,8 @@ public class ESignService implements SignService {
 
 	@Override
 	public boolean remove(SignSubject sign) {
-		return this.signs.remove(sign.getName()) != null;
+		String title = "[" + sign.getName() + "]";
+		return this.signs.remove(title.toLowerCase()) != null;
 	}
 
 	@Override
@@ -64,7 +65,7 @@ public class ESignService implements SignService {
 	}
 	
 	public Optional<ESign> get(String title) {
-		return Optional.ofNullable(this.signs.get(title));
+		return Optional.ofNullable(this.signs.get(title.toLowerCase()));
 	}
 
 }

@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.spongepowered.api.block.tileentity.Sign;
+import org.spongepowered.api.data.manipulator.mutable.tileentity.SignData;
 import org.spongepowered.api.text.Text;
 import org.spongepowered.api.world.Location;
 import org.spongepowered.api.world.World;
@@ -53,11 +54,10 @@ public class ESign {
 					.build();
 	}
 
-	public boolean createSign(EPlayer player, Sign sign) {
+	public boolean createSign(EPlayer player, Location<World> location, final SignData data) {
 		if(player.hasPermission(ESPermissions.SIGN_CREATE.get() + "." + this.sign.getName())) {
-			sign.getSignData().addElement(0, this.getTitleEnable());
-			
-			return this.sign.create(player, sign);
+			data.setElement(0, data.get(0).orElse(Text.of()).toBuilder().color(SignSubject.COLOR_ENABLE).build());
+			return this.sign.create(player, location, data);
 		} else {
 			player.sendMessage(EAMessages.NO_PERMISSION.get());
 		}
@@ -66,8 +66,8 @@ public class ESign {
 	
 	public boolean useSign(final EPlayer player, final Sign sign) {
 		if(this.sign.valide(sign)) {
-			if(!isEnable(sign)) {
-				sign.getSignData().addElement(0, this.getTitleEnable());
+			if(!this.isEnable(sign)) {
+				sign.getSignData().setElement(0, sign.getSignData().get(0).orElse(Text.of()).toBuilder().color(SignSubject.COLOR_ENABLE).build());
 			}
 			
 			if(player.hasPermission(ESPermissions.SIGN_USE.get() + "." + this.sign.getName())) {
@@ -76,8 +76,8 @@ public class ESign {
 				player.sendMessage(EAMessages.NO_PERMISSION.get());
 			}
 		} else {
-			if(isEnable(sign)) {
-				sign.getSignData().addElement(0, this.getTitleDisable());
+			if(this.isEnable(sign)) {
+				sign.getSignData().setElement(0, sign.getSignData().get(0).orElse(Text.of()).toBuilder().color(SignSubject.COLOR_DISABLE).build());
 			}
 			
 			if(player.hasPermission(ESPermissions.SIGN_USE.get() + "." + this.sign.getName())) {
@@ -89,9 +89,9 @@ public class ESign {
 		return false;
 	}
 	
-	public boolean breakSign(EPlayer player, Location<World> location, final List<Text> sign) {
+	public boolean breakSign(EPlayer player, Location<World> location, final List<Text> data) {
 		if(player.hasPermission(ESPermissions.SIGN_BREAK.get() + "." + this.sign.getName())) {			
-			return this.sign.remove(player, location, sign);
+			return this.sign.remove(player, location, data);
 		} else {
 			player.sendMessage(EAMessages.NO_PERMISSION.get());
 		}
@@ -100,7 +100,7 @@ public class ESign {
 	
 	public boolean isEnable(Sign sign) {
 		Optional<Text> title = sign.getSignData().get(0);
-		return title.isPresent() && this.getTitleEnable().equals(title.get());
+		return title.isPresent() && title.get().getColor().equals(SignSubject.COLOR_ENABLE);
 	}
 
 	public SignSubject getSubject() {
