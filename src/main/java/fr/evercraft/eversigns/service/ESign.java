@@ -55,7 +55,7 @@ public class ESign {
 	}
 
 	public boolean createSign(EPlayer player, Location<World> location, final SignData data) {
-		if(player.hasPermission(ESPermissions.SIGN_CREATE.get() + "." + this.sign.getName())) {
+		if (player.hasPermission(ESPermissions.SIGN_CREATE.get() + "." + this.sign.getName())) {
 			data.setElement(0, data.get(0).orElse(Text.of()).toBuilder().color(SignSubject.COLOR_ENABLE).build());
 			return this.sign.create(player, location, data);
 		} else {
@@ -65,22 +65,22 @@ public class ESign {
 	}
 	
 	public boolean useSign(final EPlayer player, final Sign sign) {
-		if(this.sign.valide(sign)) {
-			if(!this.isEnable(sign)) {
+		if (this.sign.valide(sign)) {
+			if (!this.isEnable(sign)) {
 				sign.getSignData().setElement(0, sign.getSignData().get(0).orElse(Text.of()).toBuilder().color(SignSubject.COLOR_ENABLE).build());
 			}
 			
-			if(player.hasPermission(ESPermissions.SIGN_USE.get() + "." + this.sign.getName())) {
+			if (player.hasPermission(ESPermissions.SIGN_USE.get() + "." + this.sign.getName())) {
 				return this.sign.useEnable(player, sign);
 			} else {
 				player.sendMessage(EAMessages.NO_PERMISSION.get());
 			}
 		} else {
-			if(this.isEnable(sign)) {
+			if (this.isEnable(sign)) {
 				sign.getSignData().setElement(0, sign.getSignData().get(0).orElse(Text.of()).toBuilder().color(SignSubject.COLOR_DISABLE).build());
 			}
 			
-			if(player.hasPermission(ESPermissions.SIGN_USE.get() + "." + this.sign.getName())) {
+			if (player.hasPermission(ESPermissions.SIGN_USE.get() + "." + this.sign.getName())) {
 				this.sign.useDisable(player, sign);
 			} else {
 				player.sendMessage(EAMessages.NO_PERMISSION.get());
@@ -90,7 +90,7 @@ public class ESign {
 	}
 	
 	public boolean breakSign(EPlayer player, Location<World> location, final List<Text> data) {
-		if(player.hasPermission(ESPermissions.SIGN_BREAK.get() + "." + this.sign.getName())) {			
+		if (player.hasPermission(ESPermissions.SIGN_BREAK.get() + "." + this.sign.getName())) {			
 			return this.sign.remove(player, location, data);
 		} else {
 			player.sendMessage(EAMessages.NO_PERMISSION.get());

@@ -41,7 +41,7 @@ public class ESignService implements SignService {
 	
 	@Override
 	public boolean add(SignSubject subject) {
-		if(!this.signs.containsKey(subject.getName())) {
+		if (!this.signs.containsKey(subject.getName())) {
 			ESign sign = new ESign(subject);
 			this.signs.put(sign.getTitle().toLowerCase(), sign);
 			return true;
@@ -58,7 +58,7 @@ public class ESignService implements SignService {
 	@Override
 	public Collection<SignSubject> getAll() {
 		Collection<SignSubject> signs = new ArrayList<SignSubject>();
-		for(ESign sign : this.signs.values()) {
+		for (ESign sign : this.signs.values()) {
 			signs.add(sign.getSubject());
 		}
 		return signs;
