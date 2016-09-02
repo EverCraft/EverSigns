@@ -27,7 +27,7 @@ import org.spongepowered.api.world.World;
 
 import fr.evercraft.everapi.EAMessage.EAMessages;
 import fr.evercraft.everapi.server.player.EPlayer;
-import fr.evercraft.everapi.services.signs.SignSubject;
+import fr.evercraft.everapi.services.sign.SignSubject;
 import fr.evercraft.eversigns.ESPermissions;
 
 public class ESign {

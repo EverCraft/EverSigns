@@ -18,9 +18,9 @@ package fr.evercraft.eversigns;
 
 import org.spongepowered.api.plugin.Dependency;
 import org.spongepowered.api.plugin.Plugin;
-import fr.evercraft.everapi.plugin.EPlugin;
 
-import fr.evercraft.everapi.services.signs.SignService;
+import fr.evercraft.everapi.plugin.EPlugin;
+import fr.evercraft.everapi.services.sign.SignService;
 import fr.evercraft.eversigns.command.sub.ESReload;
 import fr.evercraft.eversigns.service.ESignService;
 

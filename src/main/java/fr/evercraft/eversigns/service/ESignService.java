@@ -22,8 +22,8 @@ import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
-import fr.evercraft.everapi.services.signs.SignService;
-import fr.evercraft.everapi.services.signs.SignSubject;
+import fr.evercraft.everapi.services.sign.SignService;
+import fr.evercraft.everapi.services.sign.SignSubject;
 import fr.evercraft.eversigns.EverSigns;
 
 public class ESignService implements SignService {
