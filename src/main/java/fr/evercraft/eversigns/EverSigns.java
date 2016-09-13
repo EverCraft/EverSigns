@@ -19,19 +19,20 @@ package fr.evercraft.eversigns;
 import org.spongepowered.api.plugin.Dependency;
 import org.spongepowered.api.plugin.Plugin;
 
+import fr.evercraft.everapi.EverAPI;
 import fr.evercraft.everapi.plugin.EPlugin;
 import fr.evercraft.everapi.services.sign.SignService;
 import fr.evercraft.eversigns.command.sub.ESReload;
 import fr.evercraft.eversigns.service.ESignService;
 
-@Plugin(id = "fr.evercraft.eversigns", 
+@Plugin(id = "eversigns", 
 		name = "EverSigns", 
-		version = "1.2", 
+		version = EverAPI.VERSION, 
 		description = "Manage Signs",
 		url = "http://evercraft.fr/",
 		authors = {"rexbut"},
 		dependencies = {
-		    @Dependency(id = "fr.evercraft.everapi", version = "1.2")
+		    @Dependency(id = "everapi", version = EverAPI.VERSION)
 		})
 public class EverSigns extends EPlugin {
 	private ESConfig configs;
