@@ -35,7 +35,7 @@ import fr.evercraft.eversigns.service.ESignService;
 		    @Dependency(id = "everapi", version = EverAPI.VERSION),
 		    @Dependency(id = "spongeapi", version = EverAPI.SPONGEAPI_VERSION)
 		})
-public class EverSigns extends EPlugin {
+public class EverSigns extends EPlugin<EverSigns> {
 	private ESConfig configs;
 	private ESMessage messages;
 	

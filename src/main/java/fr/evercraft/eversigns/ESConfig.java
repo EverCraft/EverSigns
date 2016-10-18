@@ -25,7 +25,7 @@ import ninja.leaping.configurate.commented.CommentedConfigurationNode;
 import fr.evercraft.everapi.plugin.file.EConfig;
 import fr.evercraft.everapi.plugin.file.EMessage;
 
-public class ESConfig extends EConfig {
+public class ESConfig extends EConfig<EverSigns> {
 
 	public ESConfig(final EverSigns plugin) {
 		super(plugin);
