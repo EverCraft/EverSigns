@@ -29,6 +29,7 @@ import fr.evercraft.everapi.EAMessage.EAMessages;
 import fr.evercraft.everapi.server.player.EPlayer;
 import fr.evercraft.everapi.services.sign.SignSubject;
 import fr.evercraft.eversigns.ESPermissions;
+import fr.evercraft.eversigns.ESMessage.ESMessages;
 
 public class ESign {
 	
@@ -59,7 +60,9 @@ public class ESign {
 			data.setElement(0, data.get(0).orElse(Text.of()).toBuilder().color(SignSubject.COLOR_ENABLE).build());
 			return this.sign.create(player, location, data);
 		} else {
-			player.sendMessage(EAMessages.NO_PERMISSION.get());
+			EAMessages.NO_PERMISSION.sender()
+				.prefix(ESMessages.PREFIX)
+				.sendTo(player);
 		}
 		return false;
 	}
@@ -73,7 +76,9 @@ public class ESign {
 			if (player.hasPermission(ESPermissions.SIGN_USE.get() + "." + this.sign.getName())) {
 				return this.sign.useEnable(player, sign);
 			} else {
-				player.sendMessage(EAMessages.NO_PERMISSION.get());
+				EAMessages.NO_PERMISSION.sender()
+					.prefix(ESMessages.PREFIX)
+					.sendTo(player);
 			}
 		} else {
 			if (this.isEnable(sign)) {
@@ -83,7 +88,9 @@ public class ESign {
 			if (player.hasPermission(ESPermissions.SIGN_USE.get() + "." + this.sign.getName())) {
 				this.sign.useDisable(player, sign);
 			} else {
-				player.sendMessage(EAMessages.NO_PERMISSION.get());
+				EAMessages.NO_PERMISSION.sender()
+					.prefix(ESMessages.PREFIX)
+					.sendTo(player);
 			}
 		}
 		return false;
@@ -93,7 +100,9 @@ public class ESign {
 		if (player.hasPermission(ESPermissions.SIGN_BREAK.get() + "." + this.sign.getName())) {			
 			return this.sign.remove(player, location, data);
 		} else {
-			player.sendMessage(EAMessages.NO_PERMISSION.get());
+			EAMessages.NO_PERMISSION.sender()
+				.prefix(ESMessages.PREFIX)
+				.sendTo(player);
 		}
 		return false;
 	}
