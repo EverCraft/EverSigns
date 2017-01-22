@@ -17,6 +17,7 @@
 package fr.evercraft.eversigns.command.sub;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.spongepowered.api.command.CommandException;
@@ -45,7 +46,7 @@ public class ESReload extends ESubCommand<EverSigns> {
 		return EAMessages.RELOAD_DESCRIPTION.getText();
 	}
 	
-	public List<String> subTabCompleter(final CommandSource source, final List<String> args) throws CommandException {
+	public Collection<String> subTabCompleter(final CommandSource source, final List<String> args) throws CommandException {
 		return new ArrayList<String>();
 	}
 
