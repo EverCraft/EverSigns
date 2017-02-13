@@ -48,36 +48,34 @@ public class ESListener {
 	}
 	
 	@Listener
-	public void onSignChange(ChangeSignEvent event, @First Player player) {
+	public void onSignChange(ChangeSignEvent event, @First Player player_sponge) {
 		if (!event.isCancelled()) {
 			SignData signData = event.getText();
 			Optional<ListValue<Text>> value = signData.getValue(Keys.SIGN_LINES);
 			if (value.isPresent()) {
 				Optional<ESign> sign = this.plugin.getService().get(value.get().get(0).toPlain());
 				if (sign.isPresent()) {
-					Optional<EPlayer> optPlayer = this.plugin.getEServer().getEPlayer(player.getUniqueId());
-					if (optPlayer.isPresent()) {
-						event.setCancelled(!sign.get().createSign(optPlayer.get(), event.getTargetTile().getLocation(), signData));
-					}
+					EPlayer player = this.plugin.getEServer().getEPlayer(player_sponge);
+					event.setCancelled(!sign.get().createSign(player, event.getTargetTile().getLocation(), signData));
 				} else {
 					String line_0 = value.get().get(0).toPlain();
 					String line_1 = value.get().get(1).toPlain();
 					String line_2 = value.get().get(2).toPlain();
 					String line_3 = value.get().get(3).toPlain();
 					
-					if (!player.hasPermission(ESPermissions.REPLACE_COLOR.get())) {
+					if (!player_sponge.hasPermission(ESPermissions.REPLACE_COLOR.get())) {
 						line_0 = line_0.replaceAll(EChat.REGEX_COLOR, "");
 						line_1 = line_1.replaceAll(EChat.REGEX_COLOR, "");
 						line_2 = line_2.replaceAll(EChat.REGEX_COLOR, "");
 						line_3 = line_3.replaceAll(EChat.REGEX_COLOR, "");
 					}
-					if (!player.hasPermission(ESPermissions.REPLACE_FORMAT.get())) {
+					if (!player_sponge.hasPermission(ESPermissions.REPLACE_FORMAT.get())) {
 						line_0 = line_0.replaceAll(EChat.REGEX_FORMAT, "");
 						line_1 = line_1.replaceAll(EChat.REGEX_FORMAT, "");
 						line_2 = line_2.replaceAll(EChat.REGEX_FORMAT, "");
 						line_3 = line_3.replaceAll(EChat.REGEX_FORMAT, "");
 					}
-					if (!player.hasPermission(ESPermissions.REPLACE_MAGIC.get())) {
+					if (!player_sponge.hasPermission(ESPermissions.REPLACE_MAGIC.get())) {
 						line_0 = line_0.replaceAll(EChat.REGEX_MAGIC, "");
 						line_1 = line_1.replaceAll(EChat.REGEX_MAGIC, "");
 						line_2 = line_2.replaceAll(EChat.REGEX_MAGIC, "");
@@ -94,7 +92,7 @@ public class ESListener {
 	}
 	
 	@Listener
-	public void onSignClicked(InteractBlockEvent event, @First Player subject) {
+	public void onSignClicked(InteractBlockEvent event, @First Player player_sponge) {
 	    Optional<Location<World>> location = event.getTargetBlock().getLocation();
 	    if (location.isPresent()) {
 	    	Optional<TileEntity> title = location.get().getTileEntity();
@@ -103,10 +101,8 @@ public class ESListener {
 	    		if (sign.getSignData().get(0).isPresent()) {
 		    		Optional<ESign> esign = this.plugin.getService().get(sign.getSignData().get(0).get().toPlain());
 					if (esign.isPresent()) {
-						Optional<EPlayer> optPlayer = this.plugin.getEServer().getEPlayer(subject.getUniqueId());
-						if (optPlayer.isPresent()) {
-							esign.get().useSign(optPlayer.get(), sign);
-						}
+						EPlayer optPlayer = this.plugin.getEServer().getEPlayer(player_sponge);
+						esign.get().useSign(optPlayer, sign);
 					}
 	    		}
 	    	}
@@ -114,7 +110,7 @@ public class ESListener {
 	}
 	
 	@Listener
-	public void onSignBreak(ChangeBlockEvent.Break event, @First Player subject) {
+	public void onSignBreak(ChangeBlockEvent.Break event, @First Player player_sponge) {
 		if (!event.isCancelled()) {
 			for (Transaction<BlockSnapshot> transaction : event.getTransactions()) {
 				if (transaction.isValid() && transaction.getOriginal().getLocation().isPresent()) {
@@ -122,10 +118,8 @@ public class ESListener {
 					if (lines.isPresent() && !lines.get().isEmpty() && !lines.get().get(0).isEmpty()) {
 						Optional<ESign> sign = this.plugin.getService().get(lines.get().get(0).toPlain());
 						if (sign.isPresent()) {
-							Optional<EPlayer> player = this.plugin.getEServer().getEPlayer(subject.getUniqueId());
-							if (player.isPresent()) {
-								sign.get().breakSign(player.get(), transaction.getOriginal().getLocation().get(), lines.get());
-							}
+							EPlayer player = this.plugin.getEServer().getEPlayer(player_sponge);
+							sign.get().breakSign(player, transaction.getOriginal().getLocation().get(), lines.get());
 						}
 					}
 				}
