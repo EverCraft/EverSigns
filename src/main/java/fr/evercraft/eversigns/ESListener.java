@@ -38,6 +38,7 @@ import org.spongepowered.api.world.World;
 
 import fr.evercraft.everapi.plugin.EChat;
 import fr.evercraft.everapi.server.player.EPlayer;
+import fr.evercraft.everapi.services.ChatService;
 import fr.evercraft.eversigns.service.ESign;
 
 public class ESListener {
@@ -64,22 +65,22 @@ public class ESListener {
 					String line_3 = value.get().get(3).toPlain();
 					
 					if (!player_sponge.hasPermission(ESPermissions.REPLACE_COLOR.get())) {
-						line_0 = line_0.replaceAll(EChat.REGEX_COLOR, "");
-						line_1 = line_1.replaceAll(EChat.REGEX_COLOR, "");
-						line_2 = line_2.replaceAll(EChat.REGEX_COLOR, "");
-						line_3 = line_3.replaceAll(EChat.REGEX_COLOR, "");
+						line_0 = line_0.replaceAll(ChatService.REGEX_COLOR, "");
+						line_1 = line_1.replaceAll(ChatService.REGEX_COLOR, "");
+						line_2 = line_2.replaceAll(ChatService.REGEX_COLOR, "");
+						line_3 = line_3.replaceAll(ChatService.REGEX_COLOR, "");
 					}
 					if (!player_sponge.hasPermission(ESPermissions.REPLACE_FORMAT.get())) {
-						line_0 = line_0.replaceAll(EChat.REGEX_FORMAT, "");
-						line_1 = line_1.replaceAll(EChat.REGEX_FORMAT, "");
-						line_2 = line_2.replaceAll(EChat.REGEX_FORMAT, "");
-						line_3 = line_3.replaceAll(EChat.REGEX_FORMAT, "");
+						line_0 = line_0.replaceAll(ChatService.REGEX_FORMAT, "");
+						line_1 = line_1.replaceAll(ChatService.REGEX_FORMAT, "");
+						line_2 = line_2.replaceAll(ChatService.REGEX_FORMAT, "");
+						line_3 = line_3.replaceAll(ChatService.REGEX_FORMAT, "");
 					}
 					if (!player_sponge.hasPermission(ESPermissions.REPLACE_MAGIC.get())) {
-						line_0 = line_0.replaceAll(EChat.REGEX_MAGIC, "");
-						line_1 = line_1.replaceAll(EChat.REGEX_MAGIC, "");
-						line_2 = line_2.replaceAll(EChat.REGEX_MAGIC, "");
-						line_3 = line_3.replaceAll(EChat.REGEX_MAGIC, "");
+						line_0 = line_0.replaceAll(ChatService.REGEX_MAGIC, "");
+						line_1 = line_1.replaceAll(ChatService.REGEX_MAGIC, "");
+						line_2 = line_2.replaceAll(ChatService.REGEX_MAGIC, "");
+						line_3 = line_3.replaceAll(ChatService.REGEX_MAGIC, "");
 					}
 					
 					signData = signData.set(value.get().set(0, EChat.of(line_0)));

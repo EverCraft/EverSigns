@@ -31,13 +31,13 @@ public class ESMessage extends EMessage<EverSigns> {
 	}
 	
 	public enum ESMessages implements EnumMessage {
-		PREFIX("prefix", 				"[&4Ever&6&lKits&f] "),
-		DESCRIPTION("description",		"Gestionnaire des panneaux"),
+		PREFIX("PREFIX", 				"[&4Ever&6&lKits&f] "),
+		DESCRIPTION("DESCRIPTION",		"Gestionnaire des panneaux"),
 				
-		SIGN_CREATE("sign.create",		"&7Panneau crée avec succès."),
-		SIGN_DISABLE("sign.disable",    "&cSe panneau est désactivé."),
+		SIGN_CREATE("signCreate",		"&7Panneau crée avec succès."),
+		SIGN_DISABLE("signDisable",    "&cSe panneau est désactivé."),
 				
-		BALANCE_PLAYER("balance.player", "&7Vous avez actuellement &6<solde> <symbol>&7.", "&7Balance : &6<solde> <symbol>");
+		BALANCE_PLAYER("balancePlayer", "&7Vous avez actuellement &6<solde> <symbol>&7.", "&7Balance : &6<solde> <symbol>");
 		
 		private final String path;
 	    private final EMessageBuilder french;
