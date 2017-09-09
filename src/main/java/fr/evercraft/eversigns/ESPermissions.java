@@ -23,18 +23,17 @@ import com.google.common.base.Preconditions;
 import fr.evercraft.everapi.plugin.EnumPermission;
 
 public enum ESPermissions implements EnumPermission {
-	EVERSIGNS("command"),
+	EVERSIGNS("commands.execute"),
+	HELP("commands.help"),
+	RELOAD("commands.reload"),
 	
-	HELP("help"),
-	RELOAD("reload"),
+	REPLACE_COLOR("replaces.color"),
+	REPLACE_FORMAT("replaces.format"),
+	REPLACE_MAGIC("replaces.magic"),
 	
-	REPLACE_COLOR("replace.color"),
-	REPLACE_FORMAT("replace.format"),
-	REPLACE_MAGIC("replace.magic"),
-	
-	SIGN_CREATE("sign.create"),
-	SIGN_USE("sign.use"),
-	SIGN_BREAK("sign.break");
+	SIGN_CREATE("signs.create"),
+	SIGN_USE("signs.use"),
+	SIGN_BREAK("signs.break");
 	
 	private final static String prefix = "eversigns";
 	
