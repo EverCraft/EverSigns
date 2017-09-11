@@ -20,10 +20,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import fr.evercraft.everapi.plugin.file.EConfig;
+
 import ninja.leaping.configurate.ConfigurationNode;
 import ninja.leaping.configurate.commented.CommentedConfigurationNode;
-import fr.evercraft.everapi.plugin.file.EConfig;
-import fr.evercraft.everapi.plugin.file.EMessage;
 
 public class ESConfig extends EConfig<EverSigns> {
 
@@ -38,12 +38,14 @@ public class ESConfig extends EConfig<EverSigns> {
 	
 	@Override
 	public void loadDefault() {
-		addDefault("DEBUG", false, "Displays plugin performance in the logs");
-		addDefault("LANGUAGE", EMessage.FRENCH, "Select language messages", "Examples : ", "  French : FR_fr", "  English : EN_en");
+		this.configDefault();
 		
-		addDefault("enable-format", true);
-		addDefault("enable-icons", true);
 		
+		// Icons
+		addDefault("icons-enable", true);
+		
+		
+		// Replaces
 		ConfigurationNode replaces = this.get("replaces");
 		if (replaces.getValue() == null) {
 			replaces.getNode("[<3]").setValue("\u2764");
@@ -54,10 +56,11 @@ public class ESConfig extends EConfig<EverSigns> {
 			replaces.getNode("[RT]").setValue("\n");
 		}
 		
-		addDefault("format-default", "<DISPLAYNAME_FORMAT> &7:&f <MESSAGE>");
-		
-		ConfigurationNode formats = this.get("format-groups");
-		if (formats.getValue() == null) {
+		// Format
+		addDefault("format.enable", true);
+		addDefault("format.default", "<DISPLAYNAME_FORMAT> &7:&f <MESSAGE>");
+		ConfigurationNode formats = this.get("format.groups");
+		if (formats.isVirtual()) {
 			formats.getNode("Admin").setValue("&f[&4Admin&f] <DISPLAYNAME_FORMAT> &7:&f <MESSAGE>");
 			formats.getNode("Moderator").setValue("&f[&5Moderator&f] <DISPLAYNAME_FORMAT> &7:&f <MESSAGE>");
 		}
@@ -75,7 +78,7 @@ public class ESConfig extends EConfig<EverSigns> {
 	
 	public Map<String, String> getFormatGroups() {
 		Map<String, String> replaces = new HashMap<String, String>();
-		for (Entry<Object, ? extends CommentedConfigurationNode> node : this.get("format-groups").getChildrenMap().entrySet()) {
+		for (Entry<Object, ? extends CommentedConfigurationNode> node : this.get("format.groups").getChildrenMap().entrySet()) {
 			String value = node.getValue().getString(null);
 			if (node.getKey() instanceof String && value != null) {
 				replaces.put((String) node.getKey(), value);
@@ -85,11 +88,11 @@ public class ESConfig extends EConfig<EverSigns> {
 	}
 	
 	public String getFormatDefault() {
-		return this.get("format-default").getString("<<NAME>> <MESSAGE>");
+		return this.get("format.default").getString("<<NAME>> <MESSAGE>");
 	}
 	
 	public boolean enableFormat() {
-		return this.get("enable-format").getBoolean(true);
+		return this.get("format.enable").getBoolean(true);
 	}
 	
 	public boolean enableIcons() {
