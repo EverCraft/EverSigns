@@ -16,7 +16,9 @@
  */
 package fr.evercraft.eversigns;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -34,6 +36,14 @@ public class ESConfig extends EConfig<EverSigns> {
 	public void reload() {
 		super.reload();
 		this.plugin.getELogger().setDebug(this.isDebug());
+	}
+	
+	@Override
+	public List<String> getHeader() {
+		return 	Arrays.asList(	"####################################################### #",
+								"                   EverSigns (By rexbut)                 #",
+								"    For more information : https://docs.evercraft.fr     #",
+								"####################################################### #");
 	}
 	
 	@Override
