@@ -37,7 +37,7 @@ public class ESMessage extends EMessage<EverSigns> {
 		SIGN_CREATE("signCreate",		"&7Panneau crée avec succès."),
 		SIGN_DISABLE("signDisable",    "&cSe panneau est désactivé."),
 				
-		BALANCE_PLAYER("balancePlayer", "&7Vous avez actuellement &6<solde> <symbol>&7.", "&7Balance : &6<solde> <symbol>");
+		BALANCE_PLAYER("balancePlayer", "&7Vous avez actuellement &6{solde} {symbol}&7.", "&7Balance : &6{solde} {symbol}");
 		
 		private final String path;
 	    private final EMessageBuilder french;
