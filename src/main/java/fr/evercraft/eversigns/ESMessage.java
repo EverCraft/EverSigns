@@ -31,23 +31,23 @@ public class ESMessage extends EMessage<EverSigns> {
 	}
 	
 	public enum ESMessages implements EnumMessage {
-		PREFIX("PREFIX", 				"[&4Ever&6&lKits&f] "),
-		DESCRIPTION("DESCRIPTION",		"Gestionnaire des panneaux"),
+		PREFIX(				"[&4Ever&6&lKits&f] "),
+		DESCRIPTION(		"Gestionnaire des panneaux"),
 				
-		SIGN_CREATE("signCreate",		"&7Panneau crée avec succès."),
-		SIGN_DISABLE("signDisable",    "&cSe panneau est désactivé."),
+		SIGN_CREATE(		"&7Panneau crée avec succès."),
+		SIGN_DISABLE(		"&cSe panneau est désactivé."),
 				
-		BALANCE_PLAYER("balancePlayer", "&7Vous avez actuellement &6{solde} {symbol}&7.", "&7Balance : &6{solde} {symbol}"),
+		BALANCE_PLAYER(		"&7Vous avez actuellement &6{solde} {symbol}&7.", "&7Balance : &6{solde} {symbol}"),
 		
-		PERMISSIONS_COMMANDS_EXECUTE("permissionsCommandsExecute", ""),
-		PERMISSIONS_COMMANDS_HELP("permissionsCommandsHelp", ""),
-		PERMISSIONS_COMMANDS_RELOAD("permissionsCommandsReload", ""),
-		PERMISSIONS_REPLACES_COLOR("permissionsReplacesColor", ""),
-		PERMISSIONS_REPLACES_FORMAT("permissionsReplacesFormat", ""),
-		PERMISSIONS_REPLACES_MAGIC("permissionsReplacesMagic", ""),
-		PERMISSIONS_SIGNS_CREATE("permissionsSignsCreate", ""),
-		PERMISSIONS_SIGNS_USE("permissionsSignsUse", ""),
-		PERMISSIONS_SIGNS_BREAK("permissionsSignsBreak", "");
+		PERMISSIONS_COMMANDS_EXECUTE(""),
+		PERMISSIONS_COMMANDS_HELP(""),
+		PERMISSIONS_COMMANDS_RELOAD(""),
+		PERMISSIONS_REPLACES_COLOR(""),
+		PERMISSIONS_REPLACES_FORMAT(""),
+		PERMISSIONS_REPLACES_MAGIC(""),
+		PERMISSIONS_SIGNS_CREATE(""),
+		PERMISSIONS_SIGNS_USE(""),
+		PERMISSIONS_SIGNS_BREAK("");
 		
 		private final String path;
 	    private final EMessageBuilder french;
@@ -55,24 +55,23 @@ public class ESMessage extends EMessage<EverSigns> {
 	    private EMessageFormat message;
 	    private EMessageBuilder builder;
 	    
-	    private ESMessages(final String path, final String french) {   	
-	    	this(path, EMessageFormat.builder().chat(new EFormatString(french), true));
+	    private ESMessages(final String french) {   	
+	    	this(EMessageFormat.builder().chat(new EFormatString(french), true));
 	    }
 	    
-	    private ESMessages(final String path, final String french, final String english) {   	
-	    	this(path, 
-	    		EMessageFormat.builder().chat(new EFormatString(french), true), 
+	    private ESMessages(final String french, final String english) {   	
+	    	this(EMessageFormat.builder().chat(new EFormatString(french), true), 
 	    		EMessageFormat.builder().chat(new EFormatString(english), true));
 	    }
 	    
-	    private ESMessages(final String path, final EMessageBuilder french) {   	
-	    	this(path, french, french);
+	    private ESMessages(final EMessageBuilder french) {   	
+	    	this(french, french);
 	    }
 	    
-	    private ESMessages(final String path, final EMessageBuilder french, final EMessageBuilder english) {
+	    private ESMessages(final EMessageBuilder french, final EMessageBuilder english) {
 	    	Preconditions.checkNotNull(french, "Le message '" + this.name() + "' n'est pas définit");
 	    	
-	    	this.path = path;	    	
+	    	this.path = this.resolvePath();	    	
 	    	this.french = french;
 	    	this.english = english;
 	    	this.message = french.build();
