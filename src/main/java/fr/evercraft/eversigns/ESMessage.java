@@ -37,7 +37,17 @@ public class ESMessage extends EMessage<EverSigns> {
 		SIGN_CREATE("signCreate",		"&7Panneau crée avec succès."),
 		SIGN_DISABLE("signDisable",    "&cSe panneau est désactivé."),
 				
-		BALANCE_PLAYER("balancePlayer", "&7Vous avez actuellement &6{solde} {symbol}&7.", "&7Balance : &6{solde} {symbol}");
+		BALANCE_PLAYER("balancePlayer", "&7Vous avez actuellement &6{solde} {symbol}&7.", "&7Balance : &6{solde} {symbol}"),
+		
+		PERMISSIONS_COMMANDS_EXECUTE("permissionsCommandsExecute", ""),
+		PERMISSIONS_COMMANDS_HELP("permissionsCommandsHelp", ""),
+		PERMISSIONS_COMMANDS_RELOAD("permissionsCommandsReload", ""),
+		PERMISSIONS_REPLACES_COLOR("permissionsReplacesColor", ""),
+		PERMISSIONS_REPLACES_FORMAT("permissionsReplacesFormat", ""),
+		PERMISSIONS_REPLACES_MAGIC("permissionsReplacesMagic", ""),
+		PERMISSIONS_SIGNS_CREATE("permissionsSignsCreate", ""),
+		PERMISSIONS_SIGNS_USE("permissionsSignsUse", ""),
+		PERMISSIONS_SIGNS_BREAK("permissionsSignsBreak", "");
 		
 		private final String path;
 	    private final EMessageBuilder french;

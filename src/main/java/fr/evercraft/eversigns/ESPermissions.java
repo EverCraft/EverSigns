@@ -16,40 +16,51 @@
  */
 package fr.evercraft.eversigns;
 
-import org.spongepowered.api.command.CommandSource;
-
-import com.google.common.base.Preconditions;
-
 import fr.evercraft.everapi.plugin.EnumPermission;
+import fr.evercraft.everapi.plugin.file.EnumMessage;
+import fr.evercraft.eversigns.ESMessage.ESMessages;
 
 public enum ESPermissions implements EnumPermission {
-	EVERSIGNS("commands.execute"),
-	HELP("commands.help"),
-	RELOAD("commands.reload"),
+	EVERSIGNS("commands.execute", ESMessages.PERMISSIONS_COMMANDS_EXECUTE),
+	HELP("commands.help", ESMessages.PERMISSIONS_COMMANDS_HELP),
+	RELOAD("commands.reload", ESMessages.PERMISSIONS_COMMANDS_RELOAD),
 	
-	REPLACE_COLOR("replaces.color"),
-	REPLACE_FORMAT("replaces.format"),
-	REPLACE_MAGIC("replaces.magic"),
+	REPLACE_COLOR("replaces.color", ESMessages.PERMISSIONS_REPLACES_COLOR),
+	REPLACE_FORMAT("replaces.format", ESMessages.PERMISSIONS_REPLACES_FORMAT),
+	REPLACE_MAGIC("replaces.magic", ESMessages.PERMISSIONS_REPLACES_MAGIC),
 	
-	SIGN_CREATE("signs.create"),
-	SIGN_USE("signs.use"),
-	SIGN_BREAK("signs.break");
+	SIGN_CREATE("signs.create", ESMessages.PERMISSIONS_SIGNS_CREATE),
+	SIGN_USE("signs.use", ESMessages.PERMISSIONS_SIGNS_USE),
+	SIGN_BREAK("signs.break", ESMessages.PERMISSIONS_SIGNS_BREAK);
 	
-	private final static String prefix = "eversigns";
+	private static final String PREFIX = "eversigns";
 	
 	private final String permission;
+	private final EnumMessage message;
+	private final boolean value;
     
-    private ESPermissions(final String permission) {   	
-    	Preconditions.checkNotNull(permission, "La permission '" + this.name() + "' n'est pas définit");
-    	
-    	this.permission = permission;
+    private ESPermissions(final String permission, final EnumMessage message) {
+    	this(permission, message, false);
+    }
+    
+    private ESPermissions(final String permission, final EnumMessage message, final boolean value) {   	    	
+    	this.permission = PREFIX + "." + permission;
+    	this.message = message;
+    	this.value = value;
     }
 
+    @Override
     public String get() {
-		return ESPermissions.prefix + "." + this.permission;
+		return this.permission;
 	}
-    
-    public boolean has(CommandSource player) {
-    	return player.hasPermission(this.get());
-    }
+
+	@Override
+	public boolean getDefault() {
+		return this.value;
+	}
+
+	@Override
+	public EnumMessage getMessage() {
+		return this.message;
+	}
 }
