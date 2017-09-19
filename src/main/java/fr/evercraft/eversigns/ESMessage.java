@@ -106,4 +106,9 @@ public class ESMessage extends EMessage<EverSigns> {
 			this.builder = message;
 		}
 	}
+	
+	@Override
+	public EnumMessage getPrefix() {
+		return ESMessages.PREFIX;
+	}
 }
