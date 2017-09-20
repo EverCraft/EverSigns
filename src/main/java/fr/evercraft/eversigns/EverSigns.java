@@ -80,6 +80,10 @@ public class EverSigns extends EPlugin<EverSigns> {
 		return this.configs;
 	}
 	
+	public ESPermissions[] getPermissions() {
+		return ESPermissions.values();
+	}
+	
 	public ESignService getService() {
 		return this.service;
 	}
